@@ -1,5 +1,6 @@
 body {
   background: rgb(195, 171, 255);
+font-family: 'Gloria Hallelujah', cursive;
 }
 
 .left {
@@ -8,6 +9,10 @@ body {
 
 .right {
   text-align: right;
+}
+
+.btn {
+  margin-top: 2%;
 }
 
 .messagesArea {
@@ -34,8 +39,21 @@ body {
   color: black
 }
 
+img {
+  width: 100%;
+}
+
 @media only screen and (max-device-width: 700px){
-  blockquote, body, .btn, .title>h1, .title>h3 {
+  blockquote, body {
     font-size: 50px !important;
+  }
+  .title>h1{
+    font-size: 70px !important;
+  }
+  .title>h3, .btn {
+    font-size: 50px !important;
+  }
+  .title>label {
+    font-size: 40px !important;
   }
 }

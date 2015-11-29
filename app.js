@@ -2,17 +2,28 @@
 
 angular
   .module('app', ["firebase"])
-  .controller('mainCtrl', ["$scope", "$firebaseObject", "$firebaseArray", function($scope, $firebaseObject, $firebaseArray){
+  .controller('mainCtrl', ["$scope", "$firebaseObject", "$firebaseArray", "$sce", function($scope, $firebaseObject, $firebaseArray, $sce){
     var ref = new Firebase('https://rachelsbirthdaychat.firebaseio.com/');
 
     $scope.messages = $firebaseArray(ref);
 
     $scope.addMessage = function(newMessage, author){
       if (!newMessage) return;
-      $scope.messages.$add({
-        text: newMessage,
-        author: author || null
-      })
+
+      var payload = {};
+
+      if (newMessage.slice(0,4) === "http"){
+        payload.image = newMessage;
+      } else if (newMessage.slice(0,1) === "<"){
+        payload.pre = newMessage;
+      } else {
+        payload.text = newMessage;
+      }
+      payload.author = author || null;
+      console.log(payload);
+      $scope.messages.$add(payload)
+      $scope.newMessage = "";
+      $scope.author = "";
     }
 
     $scope.messageLayout = function(length){
@@ -21,5 +32,11 @@ angular
       }
       return false
     }
+
+    $scope.toTrustedHTML = function( html ){
+      console.log('here', $sce.trustAsHtml( html ))
+        return $sce.trustAsHtml( html );
+    }
+
     $scope.greet = "hello"
   }])
