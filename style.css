@@ -1,5 +1,5 @@
-ul {
-  list-style-type: none;
+body {
+  background: rgb(195, 171, 255);
 }
 
 .left {
@@ -23,10 +23,6 @@ ul {
   background: rgba(149, 184, 255, 0.5);
   color: white;
 }
-/*.messageBubble {
-  text-align: center;
-  left: 5%;
-}*/
 
 .title {
   text-align: center;

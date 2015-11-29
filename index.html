@@ -21,11 +21,15 @@
         <h1>Happy Birthday Rachel!</h1>
         <h3>Post a message below</h3>
       </div>
-      <div class="col-xs-12 title">
-          <textarea rows="5" class="inputfield form-control" type="text" ng-model="newMessage" required></textarea>
+      <div class="col-xs-6 col-xs-offset-3 title">
+          <label for="message">Leave a message</label>
+          <br>
+          <input id="message" class="inputfield" type="text" ng-model="newMessage" required>
           <br>
           <label for="author">Your Name (optional)</label>
+          <br>
           <input id="author" class="inputfield" type="text" ng-model="author" >
+          <br>
           <button class="btn btn-primary" ng-click="addMessage(newMessage, author)">Add</button>
       </div>
       <hr>
