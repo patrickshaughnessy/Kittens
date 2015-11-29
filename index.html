@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Rachel's Birthday Chat</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+    <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 title">
+        <h1>Happy Birthday Rachel!</h1>
+        <h3>Post a message below</h3>
+      </div>
+      <div class="col-xs-12 title">
+          <textarea rows="5" class="inputfield form-control" type="text" ng-model="newMessage" required></textarea>
+          <br>
+          <label for="author">Your Name (optional)</label>
+          <input id="author" class="inputfield" type="text" ng-model="author" >
+          <button class="btn btn-primary" ng-click="addMessage(newMessage, author)">Add</button>
+      </div>
+      <hr>
+      <div class="col-xs-12 messagesArea">
+        <div class="col-xs-12" ng-repeat="message in messages.slice().reverse() track by $index">
+
+          <div ng-show="messageLayout(messages.length)">
+            <div class="col-xs-6 messageBubble" ng-if="$index % 2 === 0">
+                <blockquote>
+                  <p>
+                    {{message.text}}
+                  </p>
+                  <footer>{{message.author}}</footer>
+                </blockquote>
+            </div>
+            <div class="col-xs-6 col-xs-offset-6 messageBubble" ng-if="$index % 2 !== 0">
+              <blockquote>
+                <p>
+                  {{message.text}}
+                </p>
+                <footer>{{message.author}}</footer>
+              </blockquote>
+            </div>
+          </div>
+
+          <div ng-hide="messageLayout(messages.length)">
+            <div class="col-xs-6 messageBubble" ng-if="$index % 2 !== 0">
+              <blockquote>
+                <p>
+                  {{message.text}}
+                </p>
+                <footer>{{message.author}}</footer>
+              </blockquote>
+            </div>
+            <div class="col-xs-6 col-xs-offset-6 messageBubble" ng-if="$index % 2 === 0">
+              <blockquote>
+                <p>
+                  {{message.text}}
+                </p>
+                <footer>{{message.author}}</footer>
+              </blockquote>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

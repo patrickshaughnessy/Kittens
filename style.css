@@ -1,0 +1,39 @@
+ul {
+  list-style-type: none;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.messagesArea {
+  background: url('https://pbs.twimg.com/profile_images/586642008409776128/XbxkHr7o.jpg');
+  background-size: contain;
+  background-repeat: repeat;
+
+}
+
+.messageBubble {
+  border-radius: 10px;
+  padding: 1%;
+  background: rgba(149, 184, 255, 0.5);
+  color: white;
+}
+/*.messageBubble {
+  text-align: center;
+  left: 5%;
+}*/
+
+.title {
+  text-align: center;
+  color: white;
+  background: rgb(195, 171, 255);
+}
+
+.inputfield {
+  color: black
+}
